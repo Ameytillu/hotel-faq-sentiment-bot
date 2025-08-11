@@ -1,0 +1,7 @@
+policy:
+  positive_threshold: 0.70
+  negative_threshold: 0.30
+rag:
+  faq_threshold: 0.25
+ui:
+  show_email_preview: true

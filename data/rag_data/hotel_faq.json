@@ -1,0 +1,284 @@
+{
+  "hotel_policies": {
+    "check_in_time": "3:00 PM",
+    "check_out_time": "12:00 PM",
+    "cancellation_policy": "Free cancellation up to 24 hours before arrival.",
+    "pet_policy": "Pets under 10kg allowed with $50 cleaning fee.",
+    "smoking_policy": "All rooms are non-smoking. Designated smoking areas available.",
+    "payment_methods": "Visa, Mastercard, American Express, cash."
+  },
+  "local_guide": [
+    {
+      "place_name": "Central Park",
+      "description": "Large urban park ideal for walks, picnics, and outdoor sports.",
+      "distance_from_hotel": "1.2 km",
+      "category": "Nature & Outdoors",
+      "opening_hours": "6:00 AM - 9:00 PM",
+      "video_url": "https://drive.google.com/uc?id=1OfTV_IaWaeYVvZACDN6PSkFD4Fx9Q7SN"
+    },
+    {
+      "place_name": "City Museum",
+      "description": "Modern museum showcasing local history and art exhibits.",
+      "distance_from_hotel": "0.8 km",
+      "category": "Culture & Arts",
+      "opening_hours": "10:00 AM - 6:00 PM",
+      "video_url": "https://drive.google.com/uc?id=1sYUDCHYaH7YFD-PkKu1ngNCGi5k_nmz7"
+    }
+  ],
+  "rooms": [
+    {
+      "room_type": "Single Room",
+      "description": "Cozy and practical room designed for solo travelers, offering comfort and privacy for short or long stays.",
+      "features": [
+        "No balcony",
+        "City or courtyard view",
+        "Single (twin-size) bed",
+        "Compact bathroom with shower",
+        "Work desk",
+        "Complimentary Wi-Fi",
+        "28-inch LED TV"
+      ],
+      "price_per_night": 120,
+      "photo_urls": [
+        "https://drive.google.com/uc?id=1wIByS2I9HQVeOjpQ67mcBd3kSMrTBPUq",
+        "https://drive.google.com/uc?id=1n7W1tBodkFnFD-vOuGl0tqgSNq6pdy5W"
+      ],
+      "video_url": "https://drive.google.com/uc?id=1So1LOtBOD2VVKCgp0dbqshnxDEix8bVo"
+    },
+    {
+      "room_type": "Double Room",
+      "description": "Comfortable room ideal for couples or two guests, featuring elegant decor and essential amenities for a pleasant stay.",
+      "features": [
+        "No balcony",
+        "City view",
+        "Double bed",
+        "Modern bathroom with shower",
+        "Seating area",
+        "Complimentary Wi-Fi",
+        "32-inch LED TV"
+      ],
+      "price_per_night": 160,
+      "photo_urls": [
+        "https://drive.google.com/uc?id=12CPVvwsSCbH9sbrU6SoqRFZcqLcZcBaf",
+        "https://drive.google.com/uc?id=1TcimPfaghXFSTZ0rrWujYn1vUfp54ik9"
+      ],
+      "video_url": "https://drive.google.com/uc?id=1tAlsBW7mMtqpHrDmGSLsojYwGmRp_DIp"
+    },
+    {
+      "room_type": "Twin Room",
+      "description": "Spacious room with two separate beds, perfect for friends or colleagues traveling together who prefer individual sleeping arrangements.",
+      "features": [
+        "No balcony",
+        "City or garden view",
+        "Two single (twin-size) beds",
+        "Modern bathroom with shower",
+        "Work desk",
+        "Complimentary Wi-Fi",
+        "32-inch LED TV"
+      ],
+      "price_per_night": 170,
+      "photo_urls": [
+        "https://drive.google.com/uc?id=1aTjopIGhV2QKQey6SOtXiNnjZ87m7E-a",
+        "https://drive.google.com/uc?id=1sLdWFuk7d900RXHLZXNtaoHLNhX5taIY"
+      ],
+      "video_url": "https://drive.google.com/uc?id=1fEBST68HAwFUmCB72k0YnNHLUmTr1o-N"
+    },
+    {
+      "room_type": "Queen Room",
+      "description": "Stylish room with enhanced space and comfort, featuring a queen-size bed and amenities suited for both leisure and business travelers.",
+      "features": [
+        "Optional balcony in some rooms",
+        "City or partial ocean view",
+        "Queen-size bed",
+        "Spacious bathroom with rain shower",
+        "Seating area",
+        "Complimentary Wi-Fi",
+        "40-inch Smart TV"
+      ],
+      "price_per_night": 190,
+      "photo_urls": [
+        "https://drive.google.com/uc?id=1nFxsKPg1ehTRMzaQ4pquXGXJhekmWQRt",
+        "https://drive.google.com/uc?id=1WmTpuuybO-lHADsrMNCZ1i5qGABOhB5n"
+      ],
+      "video_url": "https://drive.google.com/uc?id=1ZbI1TX7z4kRRyA5t-z6tqKm65EDhk_ma"
+    }
+  ],
+  "amenities": [
+    {
+      "amenity_name": "Swimming Pool",
+      "description": "Outdoor pool perfect for leisure swims or laps, surrounded by sun loungers and lush gardens.",
+      "rules": {
+        "timings": "6:00 AM - 10:00 PM",
+        "dress_code": "Proper swimwear required.",
+        "age_restrictions": "Children under 12 must be accompanied by an adult."
+      },
+      "photo_urls": [
+        "https://yourlink.com/swimming_pool_photo1.jpg",
+        "https://yourlink.com/swimming_pool_photo2.jpg"
+      ],
+      "video_urls": [
+        "https://drive.google.com/uc?id=1miP6cjhtIx_EY7W0b3nILAwRb_w9Kyxx"
+      ]
+    },
+    {
+      "amenity_name": "Gym",
+      "description": "Fully equipped fitness center with cardio machines, free weights, and personal training services available.",
+      "rules": {
+        "timings": "24 hours",
+        "dress_code": "Sports attire and proper footwear required.",
+        "age_restrictions": "Minimum age 16 years."
+      },
+      "photo_urls": [
+        "https://yourlink.com/gym_photo1.jpg",
+        "https://yourlink.com/gym_photo2.jpg"
+      ],
+      "video_urls": []
+    },
+    {
+      "amenity_name": "Bar",
+      "description": "Trendy bar serving craft cocktails, premium spirits, and a selection of wines in a stylish atmosphere.",
+      "rules": {
+        "timings": "12:00 PM - 1:00 AM",
+        "dress_code": "Smart casual attire recommended.",
+        "age_restrictions": "Must be 21 years or older to enter."
+      },
+      "photo_urls": [
+        "https://yourlink.com/bar_photo1.jpg",
+        "https://yourlink.com/bar_photo2.jpg"
+      ],
+      "video_urls": [
+        "https://drive.google.com/uc?id=18zwmQI75qC2tBGD-Ve_Hsd0MlrzK-_j2",
+        "https://drive.google.com/uc?id=1UEI1kbfzDC3aPUWl_4iu46knQQw7zQXE"
+      ]
+    },
+    {
+      "amenity_name": "Spa",
+      "description": "Luxury spa offering massages, facials, and body treatments in a tranquil setting.",
+      "rules": {
+        "timings": "9:00 AM - 9:00 PM",
+        "dress_code": "Bathrobes and slippers provided. Swimwear required for wet areas.",
+        "age_restrictions": "Minimum age 16 years."
+      },
+      "photo_urls": [
+        "https://drive.google.com/uc?id=1eYxauRKAxLScRAFgHcjXArZZ1mLkHPFz",
+        "https://drive.google.com/uc?id=1FpmA-Q5ciQYE9Ea28hlzTOBmvgyWm0Ug"
+      ],
+      "video_urls": []
+    }
+  ],
+  "upselling_services": [
+    {
+      "service_name": "Spa Menu",
+      "description": "Indulge in our luxury spa with a range of massages, facials, and body treatments designed to rejuvenate body and mind.",
+      "details": [
+        "Swedish Massage - $120 (60 min)",
+        "Deep Tissue Massage - $140 (60 min)",
+        "Aromatherapy Facial - $110 (45 min)",
+        "Hot Stone Therapy - $150 (60 min)"
+      ],
+      "availability": "Available daily from 9:00 AM to 9:00 PM. Advance booking recommended.",
+      "photo_urls": [
+        "https://drive.google.com/uc?id=1eYxauRKAxLScRAFgHcjXArZZ1mLkHPFz",
+        "https://drive.google.com/uc?id=1FpmA-Q5ciQYE9Ea28hlzTOBmvgyWm0Ug"
+      ],
+      "video_urls": []
+    }
+  ],
+  "menus": {
+    "breakfast": [
+      { "name": "American Breakfast", "description": "Scrambled eggs, toast, sausage, and hash browns.", "price": 15 },
+      { "name": "Continental Breakfast", "description": "Pastries, fruit, yogurt, and coffee.", "price": 12 }
+    ],
+    "lunch": [
+      { "name": "Chicken Caesar Salad", "description": "Grilled chicken, romaine lettuce, parmesan, croutons.", "price": 18 },
+      { "name": "Pasta Primavera", "description": "Seasonal vegetables tossed with pasta and olive oil.", "price": 16 }
+    ],
+    "dinner": [
+      { "name": "Grilled Salmon", "description": "Salmon fillet with lemon butter sauce and vegetables.", "price": 25 },
+      { "name": "Steak Frites", "description": "Sirloin steak with fries and peppercorn sauce.", "price": 28 }
+    ],
+    "brunch": [
+      { "name": "Avocado Toast", "description": "Sourdough bread topped with smashed avocado and poached egg.", "price": 14 },
+      { "name": "Belgian Waffles", "description": "Waffles served with fresh berries and maple syrup.", "price": 13 }
+    ]
+  },
+  "special_offers": {
+    "packages": [
+      {
+        "name": "Romantic Escape Package",
+        "description": "Perfect for couples: includes a one-night stay in a Queen Room, champagne on arrival, spa massage for two, and late checkout.",
+        "price": 350
+      },
+      {
+        "name": "Spa Day Package",
+        "description": "Enjoy a day of relaxation with your choice of spa treatment, light lunch, and full access to our pool and gym.",
+        "price": 180
+      }
+    ],
+    "discounts": [
+      { "name": "Summer Special", "description": "Get 15% off all room types during July and August." },
+      { "name": "Loyalty Members Discount", "description": "Exclusive 20% discount for our loyalty program members on all bookings." },
+      { "name": "Advance Booking", "description": "Save $30 per night when booking 30 days in advance." }
+    ]
+  },
+  "faq": [
+    { "question": "difference between standard and deluxe rooms", "answer": "At our hotel, standard rooms refer to Single, Double, or Twin rooms, while deluxe rooms refer to our Queen Room, offering more space, better views, and upgraded amenities." },
+    { "question": "do rooms have a balcony", "answer": "Some Queen Rooms have balconies, but Single, Double, and Twin Rooms do not include balconies." },
+    { "question": "bathtub", "answer": "Our rooms feature modern showers, but we do not have bathtubs in the guest rooms." },
+    { "question": "connecting rooms", "answer": "Yes, we have some connecting rooms available upon request. Please contact the front desk for availability." },
+    { "question": "rooms for disabled guests", "answer": "Yes, we offer accessible rooms designed for disabled guests, including wider doors, roll-in showers, and support rails. Please request an accessible room when booking." },
+    { "question": "noise cancellation", "answer": "All our guest rooms are designed with soundproofing materials, including double-glazed windows and insulated walls, to reduce outside noise and ensure a quiet and comfortable stay." },
+    { "question": "meeting rooms", "answer": "Yes, our hotel offers modern meeting rooms equipped with audio-visual facilities, high-speed Wi-Fi, and flexible seating arrangements. Ideal for business meetings or small conferences." },
+    { "question": "banquet space", "answer": "Our hotel features an elegant banquet hall suitable for weddings, social gatherings, and corporate events, accommodating up to 150 guests. Catering and décor services are available." },
+    { "question": "event space", "answer": "We have versatile event spaces that can be configured for meetings, workshops, cocktail receptions, or gala dinners. Please contact our events team for capacity details and packages." },
+    { "question": "conference facilities", "answer": "Our conference facilities include projector screens, sound systems, and dedicated event staff to ensure your meeting runs smoothly." },
+    { "question": "capacity of meeting rooms", "answer": "Our largest meeting room can host up to 50 participants in a theater-style setup. Smaller boardrooms are available for more intimate meetings of 10-20 guests." },
+    { "question": "wedding venues", "answer": "Yes, we host weddings in our beautiful banquet spaces and offer tailored wedding packages, including décor, catering, and coordination services." },
+
+    { "question": "what time is check-in", "answer": "Check-in starts at 3:00 PM.", "alts": ["check in time", "when can i check in", "earliest check in", "what time do you allow checkin"] },
+    { "question": "what time is check-out", "answer": "Check-out is at 12:00 PM.", "alts": ["checkout time", "when do i need to check out", "latest check out", "what time to leave the room"] },
+    { "question": "is early check-in available", "answer": "Early check-in is subject to availability on the day of arrival. Luggage storage is always available.", "alts": ["arrive early", "can i check in early", "check in before 3 pm", "early arrival"] },
+    { "question": "is late checkout available", "answer": "Late checkout may be available until 2:00 PM for an additional fee. Please check with the front desk a day before departure.", "alts": ["late check-out", "extend checkout", "stay past noon", "leave later"] },
+    { "question": "do you offer airport shuttle", "answer": "Yes, we offer a complimentary airport shuttle every hour from 6:00 AM to 10:00 PM. Reserve via the front desk.", "alts": ["airport shuttle service", "shuttle to airport", "do you have shuttle", "airport transfer"] },
+    { "question": "is parking available", "answer": "Yes, on-site self-parking is available for $15 per night. Spaces are subject to availability.", "alts": ["car parking", "do you have parking", "parking fee", "garage"] },
+    { "question": "do you have valet parking", "answer": "We currently offer self-parking only; valet service is not available.", "alts": ["valet", "valet service", "valet parking available"] },
+    { "question": "ev charging", "answer": "Yes, we have two EV charging spots on a first-come, first-served basis. Please bring your own adapter if required.", "alts": ["electric car charging", "tesla charger", "charge my car"] },
+    { "question": "breakfast hours", "answer": "Breakfast is served from 6:30 AM to 10:30 AM at the restaurant.", "alts": ["when is breakfast", "breakfast time", "morning meal hours"] },
+    { "question": "restaurant hours", "answer": "Our restaurant is open for lunch from 12:00 PM to 3:00 PM and for dinner from 6:00 PM to 10:00 PM.", "alts": ["dining hours", "what time is dinner", "lunch timings"] },
+    { "question": "restaurant menu", "answer": "You can view today’s restaurant menu at the front desk or via the QR code in the lobby.", "alts": ["food menu", "what is the menu", "dinner menu", "lunch menu", "today's menu"] },
+    { "question": "vegetarian vegan or gluten-free options", "answer": "Yes, our restaurant offers vegetarian, vegan, and gluten-free options. Please inform your server about any dietary needs.", "alts": ["veg options", "vegan meals", "gluten free food", "dietary restrictions"] },
+    { "question": "room service hours", "answer": "Room service is available from 6:00 AM to 11:00 PM.", "alts": ["in room dining", "order food to room", "room dining hours"] },
+    { "question": "pool hours", "answer": "The swimming pool is open from 6:00 AM to 10:00 PM.", "alts": ["when is the pool open", "swimming pool timings"] },
+    { "question": "gym hours", "answer": "Our gym is open 24 hours for in-house guests.", "alts": ["fitness center time", "when is the gym open", "workout room hours"] },
+    { "question": "spa booking", "answer": "Spa treatments are available daily from 9:00 AM to 9:00 PM. Advance booking is recommended.", "alts": ["book spa", "spa appointment", "spa timings"] },
+    { "question": "do you offer luggage storage", "answer": "Yes, we can store your luggage before check-in and after check-out at no additional cost.", "alts": ["left luggage", "bag storage", "store my bags"] },
+    { "question": "do you provide extra bed or crib", "answer": "A rollaway bed can be arranged for $20 per night. Baby cots are complimentary, subject to availability.", "alts": ["extra bed", "add bed", "baby cot", "crib"] },
+    { "question": "housekeeping frequency", "answer": "Daily housekeeping is provided. Additional cleaning can be arranged on request.", "alts": ["room cleaning", "how often is housekeeping", "towels change"] },
+    { "question": "laundry service", "answer": "Same-day laundry is available for items collected before 10:00 AM. Dry cleaning is also offered.", "alts": ["wash clothes", "dry cleaning", "laundry timings"] },
+    { "question": "do rooms have iron and hair dryer", "answer": "Yes, each room includes a hair dryer and an iron with ironing board.", "alts": ["iron", "ironing board", "hairdryer", "hair dryer available"] },
+    { "question": "is there a kettle or coffee maker", "answer": "Yes, an electric kettle with tea and coffee supplies is provided in every room.", "alts": ["tea coffee in room", "kettle", "coffee maker"] },
+    { "question": "wifi details", "answer": "Complimentary high-speed Wi-Fi is available throughout the hotel. Typical speeds are 50 Mbps.", "alts": ["internet", "wifi password", "is wifi free", "wifi speed"] },
+    { "question": "business center and printing", "answer": "Printing and scanning are available at the front desk. Charges may apply for large jobs.", "alts": ["print documents", "scan", "business services"] },
+    { "question": "currency exchange or atm", "answer": "There is an ATM in the lobby. Currency exchange is not offered on-site.", "alts": ["cash machine", "withdraw money", "money exchange"] },
+    { "question": "power adapter", "answer": "Power adapters are available at the front desk with a refundable deposit.", "alts": ["plug adapter", "travel adapter", "charger adapter"] },
+    { "question": "smoking areas", "answer": "All rooms are non-smoking. A designated smoking area is available outside the hotel entrance.", "alts": ["where can i smoke", "smoking zone", "smoke friendly"] },
+    { "question": "are pets allowed", "answer": "Pets under 10kg are allowed with a $50 cleaning fee. Please notify us in advance.", "alts": ["pet policy", "bring my dog", "cats allowed"] },
+    { "question": "security deposit", "answer": "A refundable security hold of $100 may be placed on your card at check-in.", "alts": ["deposit at check in", "incidental hold", "security hold"] },
+    { "question": "taxes and fees", "answer": "Local taxes and fees apply and will be shown during the booking process and on your invoice.", "alts": ["city tax", "service fee", "how much tax"] },
+    { "question": "lost and found", "answer": "Please contact the front desk for lost and found items. We keep logged items for 30 days.", "alts": ["lost item", "forgot in room", "found something"] },
+    { "question": "wake up call", "answer": "Yes, we can arrange a wake-up call at your preferred time.", "alts": ["morning call", "alarm call", "wake me up"] },
+    { "question": "wheelchair access", "answer": "Our public areas are wheelchair accessible and we offer accessible guest rooms with roll-in showers.", "alts": ["accessible room", "disabled access", "wheelchair friendly"] },
+    { "question": "distance to central park", "answer": "Central Park is approximately 1.2 km from the hotel.", "alts": ["how far is central park", "central park distance", "park near hotel"] },
+    { "question": "can i modify or cancel my booking", "answer": "Yes, subject to your rate plan. Most direct bookings allow free cancellation up to 24 hours before arrival.", "alts": ["change my dates", "cancel reservation", "amend booking"] },
+    { "question": "third party bookings", "answer": "If you booked via an online travel agency, please contact them directly for changes. We’re happy to help with room requests.", "alts": ["booking.com change", "expedia change", "ota reservation"] },
+    { "question": "packed breakfast for early departure", "answer": "Yes, we can arrange a packed breakfast for early check-outs when requested by 8:00 PM the day before.", "alts": ["breakfast box", "early breakfast", "takeaway breakfast"] },
+    { "question": "late night food options", "answer": "A limited snack menu is available 24/7 at the front desk.", "alts": ["midnight snack", "food after 11 pm", "late food"] },
+    { "question": "minibar policy", "answer": "Selected rooms include a minibar. Charges apply based on consumption.", "alts": ["mini bar", "fridge items", "snacks in room"] },
+    { "question": "allergy friendly rooms", "answer": "Hypoallergenic bedding is available on request. Please inform us of any allergies in advance.", "alts": ["allergy bedding", "feather free", "hypoallergenic"] },
+    { "question": "quiet rooms request", "answer": "We can assign a room on a higher floor or away from elevators based on availability.", "alts": ["low noise room", "quiet side", "away from lift"] },
+    { "question": "porterage or luggage assistance", "answer": "Yes, our team can assist with your luggage upon arrival and departure.", "alts": ["bellboy", "help with bags", "porter service"] },
+    { "question": "invoice or bill request", "answer": "An itemized invoice will be provided at checkout. If you need a company invoice, share details at check-in.", "alts": ["tax invoice", "bill copy", "receipt"] },
+    { "question": "extend my stay", "answer": "Extensions are subject to availability. Please contact the front desk as early as possible to secure your room.", "alts": ["stay longer", "add one more night", "extend booking"] },
+    { "question": "group booking rates", "answer": "For 5 or more rooms, our sales team can offer group rates and meeting packages.", "alts": ["book multiple rooms", "group discount", "teams booking"] }
+  ]
+}
