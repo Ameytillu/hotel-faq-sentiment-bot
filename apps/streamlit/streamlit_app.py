@@ -23,24 +23,22 @@ def _import_by_path(module_name: str, rel_path: Path):
 _IMPORT_MODE = {}
 
 try:
-    from core.rag.retriever import FAQRetriever
+    from core.rag.retriever import FAQRetriever  # type: ignore
     _IMPORT_MODE["retriever"] = "package"
 except Exception:
     FAQRetriever = _import_by_path("core.rag.retriever", Path("core/rag/retriever.py")).FAQRetriever
     _IMPORT_MODE["retriever"] = "file"
 
 try:
-    from core.rag.router import HotelQARouter
+    from core.rag.router import HotelQARouter  # type: ignore
     _IMPORT_MODE["router"] = "package"
 except Exception:
     HotelQARouter = _import_by_path("core.rag.router", Path("core/rag/router.py")).HotelQARouter
     _IMPORT_MODE["router"] = "file"
 
-# ---------- std imports ----------
+# ---------- std / local imports ----------
 import re
 import streamlit as st
-
-# ---------- local imports (these should already work via package path) ----------
 from core.sentiment.loader import load_sentiment_model
 from core.sentiment.predictor import predict_sentiment
 from core.policy.restaurant_actions import decide_action
@@ -60,10 +58,20 @@ st.title("🛎️ Hotel Chatbot — Offline (FAQ + Sentiment)")
 # Cache heavy resources (with a version to bust Streamlit cache)
 # =========================================================
 @st.cache_resource
-def get_retriever_and_router(version: str = "v6"):
-    retriever = FAQRetriever(str(FAQ_PATH))
-    router = HotelQARouter(str(FAQ_PATH), retriever)
-    return retriever, router
+def get_retriever_and_router(version: str = "v10"):
+    """Build + return retriever and router with a guaranteed fresh import."""
+    import importlib
+    import core.rag.retriever as retr_mod
+    import core.rag.router as router_mod
+
+    # avoid stale bytecode/module state in hosted envs
+    importlib.invalidate_caches()
+    retr_mod = importlib.reload(retr_mod)
+    router_mod = importlib.reload(router_mod)
+
+    retriever = retr_mod.FAQRetriever(str(FAQ_PATH))
+    router = router_mod.HotelQARouter(str(FAQ_PATH), retriever)
+    return retriever, router, retr_mod  # return module for diagnostics, too
 
 @st.cache_resource
 def get_model_and_vec():
@@ -71,7 +79,7 @@ def get_model_and_vec():
 
 # ---------- load with friendly errors ----------
 try:
-    retriever, router = get_retriever_and_router(version="v6")
+    retriever, router, retr_mod = get_retriever_and_router(version="v10")
 except Exception as e:
     st.error("Failed to load FAQ router/retriever. Check `data/rag_data/hotel_faq.json` formatting.")
     st.exception(e)
@@ -83,6 +91,13 @@ except Exception as e:
     st.error("Failed to load sentiment model/vectorizer (.pkl files).")
     st.exception(e)
     st.stop()
+
+# ---------- diagnostics (AFTER retriever is built) ----------
+import inspect
+st.caption(f"retriever module path: {getattr(retr_mod, '__file__', 'unknown')}")
+st.caption(f"HAVE_BM25: {getattr(retr_mod, 'HAVE_BM25', None)}")
+st.caption(f"backend: {getattr(retriever, 'backend_name', getattr(retriever, 'backend', '?'))}")
+# st.code("\n".join(inspect.getsource(retr_mod).splitlines()[:25]))  # optional
 
 # =========================================================
 # Simple intent detection (used in Auto mode)
