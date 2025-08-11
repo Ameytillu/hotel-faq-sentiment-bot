@@ -1,6 +1,7 @@
-streamlit>=1.33
-rank-bm25==0.2.2
+streamlit==1.36.0
+numpy==1.26.4
+pandas==2.0.3
+scipy==1.11.4
 scikit-learn==1.3.2
-numpy<2
-rapidfuzz>=3.0
-# force rebuild 2025-08-10
+# rapidfuzz is optional; include only if you actually import it
+# rapidfuzz==3.0.0
