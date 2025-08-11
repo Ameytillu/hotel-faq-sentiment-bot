@@ -1,85 +1,78 @@
-# apps/streamlit/streamlit_app.py
+# ------------------------------------------------------------
+# Hotel FAQ + Sentiment (offline) — Streamlit app
+# ------------------------------------------------------------
+from __future__ import annotations
 
-# ---------- robust module imports header ----------
+# ---------- robust path setup (works locally & on Streamlit Cloud)
 from pathlib import Path
 import sys
 
-# find project root (…/hotel_faq_sentiment_bot)
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[2]  # …/hotel_faq_sentiment_bot
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-# helper: import a module by file path (fallback when package import fails)
-def _import_by_path(module_name: str, rel_path: Path):
+def _import_by_path(module_name: str, rel_path: str):
+    """Import a module by a relative path as a fallback."""
     import importlib.util
     full = REPO_ROOT / rel_path
     spec = importlib.util.spec_from_file_location(module_name, full)
     mod = importlib.util.module_from_spec(spec)  # type: ignore
-    assert spec.loader is not None, f"Cannot load {module_name} from {full}"
+    assert spec and spec.loader, f"Cannot import {module_name} from {full}"
     spec.loader.exec_module(mod)  # type: ignore
     return mod
 
-# try normal imports; fallback to file imports if needed
+# ---------- try normal package imports, then fallback to path imports
 _IMPORT_MODE = {}
-
 try:
-    from core.rag.retriever import FAQRetriever  # type: ignore
+    from core.rag.retriever import FAQRetriever           # type: ignore
     _IMPORT_MODE["retriever"] = "package"
 except Exception:
-    FAQRetriever = _import_by_path("core.rag.retriever", Path("core/rag/retriever.py")).FAQRetriever
+    FAQRetriever = _import_by_path("core.rag.retriever", "core/rag/retriever.py").FAQRetriever  # type: ignore
     _IMPORT_MODE["retriever"] = "file"
 
 try:
-    from core.rag.router import HotelQARouter  # type: ignore
+    from core.rag.router import HotelQARouter             # type: ignore
     _IMPORT_MODE["router"] = "package"
 except Exception:
-    HotelQARouter = _import_by_path("core.rag.router", Path("core/rag/router.py")).HotelQARouter
+    HotelQARouter = _import_by_path("core.rag.router", "core/rag/router.py").HotelQARouter      # type: ignore
     _IMPORT_MODE["router"] = "file"
 
-# ---------- std / local imports ----------
+# ---------- std / local imports
 import re
 import streamlit as st
+
 from core.sentiment.loader import load_sentiment_model
 from core.sentiment.predictor import predict_sentiment
 from core.policy.restaurant_actions import decide_action
 from services.coupons import create_free_coupon
 from services.payments import calc_refund
 
-# ---------- paths ----------
+# ---------- paths
 FAQ_PATH        = REPO_ROOT / "data" / "rag_data" / "hotel_faq.json"
 MODEL_PATH      = REPO_ROOT / "models" / "sentiment_model.pkl"
 VECTORIZER_PATH = REPO_ROOT / "models" / "vectorizer.pkl"
 
-# ---------- page config ----------
+# ---------- page config
 st.set_page_config(page_title="Hotel Chatbot (Offline)", page_icon="🛎️")
 st.title("🛎️ Hotel Chatbot — Offline (FAQ + Sentiment)")
 
 # =========================================================
-# Cache heavy resources (with a version to bust Streamlit cache)
+# Cache heavy resources
+# bump versions below to force cloud rebuild if needed
 # =========================================================
 @st.cache_resource
-def get_retriever_and_router(version: str = "v10"):
-    """Build + return retriever and router with a guaranteed fresh import."""
-    import importlib
-    import core.rag.retriever as retr_mod
-    import core.rag.router as router_mod
-
-    # avoid stale bytecode/module state in hosted envs
-    importlib.invalidate_caches()
-    retr_mod = importlib.reload(retr_mod)
-    router_mod = importlib.reload(router_mod)
-
-    retriever = retr_mod.FAQRetriever(str(FAQ_PATH))
-    router = router_mod.HotelQARouter(str(FAQ_PATH), retriever)
-    return retriever, router, retr_mod  # return module for diagnostics, too
+def get_retriever_and_router(_version: str = "v8"):
+    retriever = FAQRetriever(str(FAQ_PATH))
+    router = HotelQARouter(str(FAQ_PATH), retriever)
+    return retriever, router
 
 @st.cache_resource
-def get_model_and_vec():
+def get_model_and_vec(_version: str = "v2"):
     return load_sentiment_model(str(MODEL_PATH), str(VECTORIZER_PATH))
 
-# ---------- load with friendly errors ----------
+# ---------- load with friendly errors
 try:
-    retriever, router, retr_mod = get_retriever_and_router(version="v10")
+    retriever, router = get_retriever_and_router()
 except Exception as e:
     st.error("Failed to load FAQ router/retriever. Check `data/rag_data/hotel_faq.json` formatting.")
     st.exception(e)
@@ -92,15 +85,8 @@ except Exception as e:
     st.exception(e)
     st.stop()
 
-# ---------- diagnostics (AFTER retriever is built) ----------
-import inspect
-st.caption(f"retriever module path: {getattr(retr_mod, '__file__', 'unknown')}")
-st.caption(f"HAVE_BM25: {getattr(retr_mod, 'HAVE_BM25', None)}")
-st.caption(f"backend: {getattr(retriever, 'backend_name', getattr(retriever, 'backend', '?'))}")
-# st.code("\n".join(inspect.getsource(retr_mod).splitlines()[:25]))  # optional
-
 # =========================================================
-# Simple intent detection (used in Auto mode)
+# Intent detection (used in Auto mode)
 # =========================================================
 REVIEW_KW = {
     "food","dish","meal","restaurant","breakfast","lunch","dinner",
@@ -140,10 +126,8 @@ with st.sidebar:
         st.write(f"Vectorizer exists: {VECTORIZER_PATH.exists()}  →  {VECTORIZER_PATH}")
         st.write("Import mode:", _IMPORT_MODE)
         st.write("FAQ backend:", getattr(retriever, "backend_name", "?"))
-        st.write("Indexed entries:", len(getattr(retriever, "entries", [])))
-        st.write("Router room types:", getattr(router, "room_types", []))
         try:
-            st.write("Sample questions:", [e["q"] for e in retriever.entries[:3]])
+            st.write("Indexed entries:", len(getattr(retriever, "entries", [])))
         except Exception:
             pass
         try:
@@ -167,42 +151,48 @@ user = st.chat_input("Ask a hotel question or submit a restaurant review…")
 if not user:
     st.stop()
 
-# echo user
 st.session_state.chat.append({"role": "user", "text": user})
 st.chat_message("user").write(user)
 
-# choose intent
 intent = {"Auto": detect_intent(user), "FAQ": "FAQ", "Review": "REVIEW"}[mode]
 st.caption(f"Detected intent: **{intent}**")
 
-blocks = []
+blocks: list[str] = []
 
 # =========================================================
 # FAQ branch (Router → Retriever)
 # =========================================================
 if intent == "FAQ":
-    result = router.answer(user, threshold_retriever=faq_thr)
+    try:
+        # router.answer is the main entry; it will use rules first then retrieval
+        result = router.answer(user, threshold_retriever=faq_thr)
+    except Exception as e:
+        st.error("FAQ routing failed.")
+        st.exception(e)
+        st.stop()
 
     if result.get("found"):
         kind = result.get("kind", "rule")
         if kind == "rule":
             blocks.append(
-                f"**Answer:** {result['answer']}\n\n_Matched (rule):_ “{result['question']}”"
+                f"**Answer:** {result['answer']}\n\n_Matched (rule):_ “{result.get('question','')}”"
             )
-        else:  # retrieval
-            sim = result.get("similarity", 0)
+        else:
+            sim = result.get("similarity", 0.0)
             blocks.append(
-                f"**FAQ:** {result['answer']}\n\n_Matched:_ “{result['question']}” (sim={sim:.2f})"
+                f"**FAQ:** {result['answer']}\n\n_Matched:_ “{result.get('question','')}” (sim={sim:.2f})"
             )
     else:
         blocks.append("I couldn’t find a close FAQ match.")
         sugg = result.get("suggestions", [])
         if sugg:
-            blocks.append(
-                "Did you mean:\n" + "\n".join(
-                    [f"- {s['question']} _(sim={s['score']:.2f})_" for s in sugg[:5]]
-                )
-            )
+            items = []
+            for s in sugg[:5]:
+                q = s.get("question") or s.get("q") or ""
+                sc = s.get("score", 0.0)
+                items.append(f"- {q} _(sim={sc:.2f})_")
+            if items:
+                blocks.append("Did you mean:\n" + "\n".join(items))
         blocks.append("Try rephrasing or lowering the FAQ threshold in the sidebar.")
 
 # =========================================================
@@ -245,7 +235,7 @@ else:
     else:
         blocks.append(senti_msg)  # neutral acknowledgement
 
-# output assistant message
-bot_text = "\n\n".join(blocks)
+# ---------- output assistant message
+bot_text = "\n\n".join(blocks) if blocks else "Sorry, I couldn’t process that."
 st.session_state.chat.append({"role": "assistant", "text": bot_text})
 st.chat_message("assistant").write(bot_text)
