@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# ensure RAG data stays tracked
+!data/rag_data/
+!data/rag_data/*.json
+
 # Distribution / packaging
 .Python
 build/
