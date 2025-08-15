@@ -1,7 +1,2 @@
-streamlit==1.36.0
-numpy>=1.26,<2.0
-pandas==2.0.3
-scipy==1.11.4
-scikit-learn==1.5.1
-rapidfuzz>=3.0
-# force rebuild
+﻿streamlit==1.36.0
+# minimal build to isolate baking issue
